@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Repository</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
+  <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <%- include ("header.ejs") %>
+    <main>
+        <div class="content">
+    
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+          <div class="form-group">
+          </div>
+          <div class="text-center">
+          <button id="getRecipes"  class="btn btn-primary">Get My Recipes</button>
+          </div>
+        </div>
+        <div class="col-sm-4" id="json"></div>
+    </div>
+  </div>
+</div>
+  </main>
+<script>
+
+    document.getElementById("getRecipes").addEventListener('click', getRecipes);
+function getRecipes() {  
+  
+  $.ajax({
+    type: 'GET',
+    url: "/getRecipes",
+    //return data in json format
+    dataType: 'html',  
+    success: (data) => {
+      //double check that we are getting the right thing
+      console.log('ajax success!', data);
+      
+      //fill div with query result
+      $('#json').html(data);
+    
+    }//success data call
+  
+  })//ajax function call
+}</script>
+</body>
+</html>
