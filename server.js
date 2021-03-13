@@ -4,7 +4,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-const connectionString = process.env.DATABASE_URL || "postgres://vhyzhflxyytanj:bc4dbbdeb35ca73be7089a137f0f32b085db0d3f4b8bb8e8618c9f175e7508e4@ec2-54-163-140-104.compute-1.amazonaws.com:5432/d8u2qpta90a6r2?ssl=true";
+const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({connectionString: connectionString});
 
 express()
