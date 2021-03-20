@@ -12,11 +12,6 @@ html{
     background-repeat: repeat;
 }
 
-body {
-    background-color: rgba(255,255,255, 0.90);
-    min-height: 100vh;
-}
-
 
 header {
     background-color: #38a3a5;
@@ -25,17 +20,34 @@ header {
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     font-family: 'Cabin Sketch', cursive;;
 }
-main{
-/* background-color: #38a3a5; */
-/* box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); */
-width: 1200px;
+.content{
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+
+background-color: rgba(255,255,255, 0.95);
 margin: 2em auto;
+padding: 1em;
 }
 
-.content {
-    /* background-color: white; */
-    margin: 1em 1em;
-    /* box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); */
+.small {
+    width: 400px; 
+}
+
+.large {
+  width: 1200px; 
+  height: 90vh; 
+  text-align: center;
+}
+
+.fill-height {
+    height: 80vh;
+}
+
+.outline {
+    border: #38a3a5 solid 3px;
+    padding: 2em;
+}
+
+h2{
     text-align: center;
 }
 ul {
@@ -52,6 +64,12 @@ h1 {
     font-size: 6em;
     font-weight: lighter;
     text-align: center;
+}
+
+input, textarea, select {
+    font-size: 124%;
+    width: 300px;
+    margin-bottom: .5em;
 }
 
 button {

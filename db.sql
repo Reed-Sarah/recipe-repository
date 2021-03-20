@@ -38,3 +38,4 @@ CREATE TABLE directions (
 
 INSERT INTO users (first_name, last_name, email, user_password) VALUES ('Sarah', 'Reed', 'sarahreed101@hotmail.com', 'Password123!');
 Insert INTO recipes (user_id, recipe_title) VALUES ('1', 'Sweet Pork'), ('1', 'Butter Chicken'), ('1', 'Tomatillo Sauce');
+Insert INTO recipes (user_id, recipe_title) VALUES ('58', 'Enchiladas'), ('58', 'Biscuits'), ('58', 'Sloppy Joes');

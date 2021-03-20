@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Repository</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
+  <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <%- include ("header.ejs") %>
+    
+        <div class="content small">
+            <div class="outline">
+            <h2>Create Account</h2>
+            
+                <p>All fields are required</p>     
+                 <label>First Name:</label><br>
+                     <input required type="text" placeholder="First Name" name="first_name" id="fname"><br>
+                     <label>Last Name:</label><br>
+                     <input required type="text" placeholder="Last Name" name="last_name" id="lname" ><br>
+                     <label>Email Address:</label><br>
+                     <input required type="email" name="email" id="email" placeholder="Email Address"> <br>
+                     <label>Password:</label><br>
+                     <input required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" type="password" name="user_password" id="password" placeholder=Password><br>
+                   
+             <button id="register">Create Account</button>
+         
+</div></div>
+  
+<script>
+
+    document.getElementById("register").addEventListener('click', register);
+    
+function register() {  
+    data = {};
+    data['fname'] = $("#fname").val();
+    data["lname"] = $("#lname").val();
+    data["email"] = $("#email").val();
+    data["password"] = $("#password").val();
+  console.log(data);
+  $.post("/register", {data: data}, function(result){
+      console.log("navigate to login page")
+    window.location.href = "/login";
+  });
+}</script>
+</body>
+</html>
