@@ -11,6 +11,8 @@ CREATE TABLE recipes (
   recipe_id SERIAL NOT NULL,
   user_id INT NOT NULL,
   recipe_title VARCHAR(255),
+  ingredients TEXT,
+  directions TEXT,
   PRIMARY KEY (recipe_id),
   FOREIGN KEY (user_id) REFERENCES users (user_id)
 );

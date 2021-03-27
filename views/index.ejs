@@ -20,7 +20,7 @@
           <div class="form-group">
           </div>
           <div class="text-center">
-          <button id="getRecipes"  class="btn btn-primary">Get My Recipes</button>
+          <a href="/addRecipe" ><button id="addRecipe"  class="btn btn-primary">Add Recipe</button></a>
           </div>
         </div>
         <div class="col-sm-4" id="json"></div>
@@ -30,8 +30,6 @@
   </main>
 <script>
 
-    document.getElementById("getRecipes").addEventListener('click', getRecipes);
-function getRecipes() {  
   
   $.ajax({
     type: 'GET',
@@ -48,6 +46,8 @@ function getRecipes() {
     }//success data call
   
   })//ajax function call
-}</script>
+
+  
+</script>
 </body>
 </html>
