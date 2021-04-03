@@ -34,7 +34,7 @@ padding: 1em;
 
 .large {
   width: 1200px; 
-  height: 90vh; 
+  /* height: 90vh;  */
   text-align: center;
 }
 
@@ -51,15 +51,24 @@ h2{
     text-align: center;
 }
 ul {
-   width: 400px; 
+   width: 500px; 
    margin: 1em auto;
 }
 
 li {
 font-size: 2.5em;
-
 text-align: left;
 }
+
+ul a {
+    text-decoration: none;
+    color: black;
+}
+
+ul a:hover {
+color:#38a3a5;
+}
+
 h1 {
     font-size: 6em;
     font-weight: lighter;
@@ -72,6 +81,16 @@ input, textarea, select {
     margin-bottom: .5em;
 }
 
+.ingredients-input {
+    width:400px;
+    height: 200px;
+}
+
+.directions-input {
+    width: 900px;
+    height: 300px;
+}
+
 button {
     background-color: #38a3a5;
     border-radius: 5px;
@@ -79,3 +98,28 @@ button {
     font-weight: bold;
 }
 
+.align-left {
+text-align:left;
+}
+
+.ingredients {
+    width: 450px;
+    margin: 0 auto 2em auto;
+}
+
+.directions {
+    padding: 0 2em 2em 2em;
+}
+
+.icon-containers {
+    float:right;
+}
+
+.icon {
+    color:#38a3a5;
+    padding-left: 1em;
+}
+
+.icon:hover {
+    color:black;
+}

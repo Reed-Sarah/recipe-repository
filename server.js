@@ -54,6 +54,9 @@ express()
         }
     })
     .post('/saveRecipe', saveRecipe)
+    .post('/delete', deleteRecipe)
+    .get('/edit', editRecipe)
+    .post('/updateRecipe', updateRecipe)
     .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
@@ -189,8 +192,8 @@ function recipe(req, res) {
         }
 
         let recipeInfo = result.rows[0];
-        recipeInfo.ingredients = recipeInfo.ingredients.toString();
-        recipeInfo.ingredients = recipeInfo.ingredients.replace("\n", "<br>");
+        recipeInfo.ingredients = recipeInfo.ingredients.split("\n").join("<br>");
+        recipeInfo.directions = recipeInfo.directions.split("\n").join("<br><br>");
         console.log("Back from DB with result:");
         console.log(recipeInfo)
         if (global.user_id) {
@@ -204,8 +207,63 @@ function recipe(req, res) {
     });
 }
 
-function buildRecipeDisplay(recipe) {
-    let display = "<h2>" + recipe.recipe_title + "</h2>";
-    display += "<p>" + recipe.ingredients + "</p>";
-    return display;
+function deleteRecipe(req, res) {
+    console.log(req.body.data)
+    console.log(req.body.data.id)
+    
+    var sql = "DELETE FROM recipes WHERE recipe_id = $1;";
+    console.log("deleting recipe");
+    pool.query(sql, [req.body.data.id], function (err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        
+    });
+}
+
+function editRecipe(req, res){
+    var sql = "SELECT * FROM recipes WHERE recipe_id = $1;";
+    console.log("getting recipe for editing");
+    console.log(req.query.data.id)
+    pool.query(sql, [req.query.data.id], function (err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+
+        let recipeInfo = result.rows[0];
+        recipeInfo.ingredients = recipeInfo.ingredients.split("\n").join("<br>");
+        recipeInfo.directions = recipeInfo.directions.split("\n").join("<br><br>");
+        console.log("Back from DB with result:");
+        console.log(recipeInfo)
+        if (global.user_id) {
+            res.render('index', {
+                recipe: recipeInfo
+            });
+        } else {
+            res.render('login')
+        }
+    });
+}
+
+function updateRecipe(req, res) {
+    console.log("Updating recipe");
+    let data = {}
+    data = req.body.data;
+    
+    data = Object.values(data);
+    
+    const sql = 'UPDATE recipes SET recipe_title = $1, ingredients = $2, directions = $3 WHERE recipe_id = $4;';
+    pool.query(sql, data, function (err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ");
+            console.log(err);
+        }
+        console.log("Recipe Updated");
+        res.json("Recipe Successfully Updated!")
+    });
 }

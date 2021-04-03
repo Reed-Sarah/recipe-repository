@@ -13,27 +13,29 @@
     <main>
         <div class="content large">
             <div class="outline">
-                <h2>Add Recipe to Repository</h2>
+                <h2>Edit Recipe</h2>
        <label>Title:</label><br>
-       <input id="title" Placeholder="Recipe Title"><br>
+       <input id="title" value="<%- recipe.recipe_title %>"><br>
        <label>Ingredients</label><br>
-       <textarea id="ingredients" class="ingredients-input" placeholder="Ingredients go here..."></textarea><br>
+       <textarea id="ingredients" class="ingredients-input" placeholder="Ingredients go here..."><%- recipe.ingredients %></textarea><br>
        <label>Directions</label><br>
-       <textarea id="directions" class="directions-input" placeholder="Directions go here..."></textarea><br>
-       <button id="saveRecipe">Add Recipe</button>
+       <textarea id="directions" class="directions-input" placeholder="Directions go here..."><%- recipe.directions %></textarea><br>
+       <button id="updateRecipe">Update Recipe</button>
        </div>
 </div>
   </main>
 <script>
-    document.getElementById("saveRecipe").addEventListener('click', saveRecipe);
+  
+    document.getElementById("updateRecipe").addEventListener('click', updateRecipe);
 
-    function saveRecipe() {  
+    function updateRecipe() {  
     data = {};
     data['title'] = $("#title").val();
     data["ingredients"] = $("#ingredients").val();
     data["directions"] = $("#directions").val();
+    data["id"] = "<%-recipe.recipe_id %>";
   console.log(data);
-  $.post("/saveRecipe", {data: data}, function(result){
+  $.post("/updateRecipe", {data: data}, function(result){
     window.location.href = "/";
   });
 }
