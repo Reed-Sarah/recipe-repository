@@ -14,31 +14,31 @@
         <div class="content large">
             <div class="outline">
                 <h2>Edit Recipe</h2>
-       <label>Title:</label><br>
-       <input id="title" value="<%- recipe.recipe_title %>"><br>
-       <label>Ingredients</label><br>
-       <textarea id="ingredients" class="ingredients-input" placeholder="Ingredients go here..."><%- recipe.ingredients %></textarea><br>
-       <label>Directions</label><br>
-       <textarea id="directions" class="directions-input" placeholder="Directions go here..."><%- recipe.directions %></textarea><br>
-       <button id="updateRecipe">Update Recipe</button>
+                <label>Title:</label><br>
+                <input id="title" value="<%- recipe.recipe_title %>"><br>
+                <label>Ingredients</label><br>
+                <textarea id="ingredients" class="ingredients-input" placeholder="Ingredients go here..."><%- recipe.ingredients %></textarea><br>
+                <label>Directions</label><br>
+                <textarea id="directions" class="directions-input" placeholder="Directions go here..."><%- recipe.directions %></textarea><br>
+                <button id="updateRecipe">Update Recipe</button>         
        </div>
 </div>
   </main>
 <script>
-  
-    document.getElementById("updateRecipe").addEventListener('click', updateRecipe);
+ document.getElementById("updateRecipe").addEventListener('click', updateRecipe);
 
-    function updateRecipe() {  
-    data = {};
-    data['title'] = $("#title").val();
-    data["ingredients"] = $("#ingredients").val();
-    data["directions"] = $("#directions").val();
-    data["id"] = "<%-recipe.recipe_id %>";
-  console.log(data);
-  $.post("/updateRecipe", {data: data}, function(result){
-    window.location.href = "/";
-  });
-}
+function updateRecipe() {  
+data = {};
+data['title'] = $("#title").val();
+data["ingredients"] = $("#ingredients").val();
+data["directions"] = $("#directions").val();
+data["id"] = "<%-recipe.recipe_id %>";
+console.log(data);
+$.post("/updateRecipe", {data: data}, function(result){
+window.location.href = "/";
+});
+} 
+   
 
 </script>
 </body>

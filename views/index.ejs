@@ -20,7 +20,7 @@
           <div class="form-group">
           </div>
           <div class="text-center">
-          <a href="/addRecipe" ><button id="addRecipe"  class="btn btn-primary">Add Recipe</button></a>
+          <a href="/addRecipe" ><div id="addRecipe"  class="btn btn-primary">Add Recipe</div></a>
           </div>
         </div>
         <div class="col-sm-4" id="json"></div>
@@ -34,18 +34,12 @@
   $.ajax({
     type: 'GET',
     url: "/getRecipes",
-    //return data in json format
     dataType: 'html',  
     success: (data) => {
-      //double check that we are getting the right thing
       console.log('ajax success!', data);
-      
-      //fill div with query result
       $('#json').html(data);
-    
-    }//success data call
-  
-  })//ajax function call
+    }
+  })
 
   
 </script>

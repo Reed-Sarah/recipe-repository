@@ -91,13 +91,21 @@ input, textarea, select {
     height: 300px;
 }
 
-button {
+.btn, button {
     background-color: #38a3a5;
+    border-color: black;
+    border-style: solid;
     border-radius: 5px;
     padding: .5em;
     font-weight: bold;
+    width: 100px;
+    margin: 0 auto;
+    color:black;
 }
-
+a {
+    text-decoration: none;
+}
+   
 .align-left {
 text-align:left;
 }
@@ -123,3 +131,20 @@ text-align:left;
 .icon:hover {
     color:black;
 }
+
+@media only screen and (max-width: 1200px) {
+    .large {
+      width: 90vw;
+    }
+
+    .directions-input {
+        width:80%;
+        height: 300px;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .small {
+      width: 90vw;
+    }
+  }
